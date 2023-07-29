@@ -143,8 +143,27 @@ class _Category extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
+      Center(
+        child: Container(
+            width: 175,
+            decoration: BoxDecoration(
+                boxShadow: List.filled(
+                    1,
+                    BoxShadow(
+                        offset: Offset(-18, -18),
+                        blurRadius: 25,
+                        color: Color(0x770D253C))))),
+      ),
       Container(
         margin: EdgeInsets.fromLTRB(0, 0, 16, 0),
+        // decoration: BoxDecoration(),
+        foregroundDecoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(28),
+            gradient: LinearGradient(
+              colors: [Color(0xFF0D253C), Color(0x000D253C)],
+              begin: Alignment.bottomCenter,
+              end: Alignment.center,
+            )),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(28),
           child: Image.asset(
