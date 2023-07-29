@@ -1,7 +1,8 @@
 import 'package:blog_club/data.dart';
-import 'package:dotted_border/dotted_border.dart';
+// import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,6 +34,11 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.w800,
             ),
             headlineMedium: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.w800,
+            ),
+            headlineLarge: TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 24,
                 color: primaryTextColor),
@@ -87,11 +93,75 @@ class HomeScreen extends StatelessWidget {
                         style: Theme.of(context).textTheme.titleLarge),
                   ),
                   _StoryList(stories: stories),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  _CategoryList(),
                 ],
               )),
         ),
       ),
     );
+  }
+}
+
+class _CategoryList extends StatelessWidget {
+  _CategoryList({
+    Key? key,
+  }) : super(key: key);
+
+  final category = AppDatabase.categories;
+
+  @override
+  Widget build(BuildContext context) {
+    return CarouselSlider.builder(
+      itemBuilder: (context, index, realIndex) =>
+          _Category(category: category[index]),
+      options: CarouselOptions(
+          scrollDirection: Axis.horizontal,
+          viewportFraction: 0.8,
+          aspectRatio: 1.2,
+          initialPage: 0,
+          scrollPhysics: const BouncingScrollPhysics(),
+          disableCenter: true,
+          enableInfiniteScroll: false,
+          enlargeCenterPage: true,
+          enlargeStrategy: CenterPageEnlargeStrategy.height),
+      itemCount: category.length,
+    );
+  }
+}
+
+class _Category extends StatelessWidget {
+  const _Category({
+    Key? key,
+    required this.category,
+  }) : super(key: key);
+
+  final Category category;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(children: [
+      Container(
+        margin: EdgeInsets.fromLTRB(0, 0, 16, 0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(28),
+          child: Image.asset(
+            'assets/img/posts/large/${category.imageFileName}',
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+      Positioned(
+        left: 38,
+        bottom: 54,
+        child: Text(
+          category.title,
+          style: Theme.of(context).textTheme.headlineMedium,
+        ),
+      ),
+    ]);
   }
 }
 
@@ -140,27 +210,25 @@ class _Story extends StatelessWidget {
         child: Column(
           children: [
             Stack(children: [
-              DottedBorder(
-                child: Container(
-                  // margin: EdgeInsets.fromLTRB(7, 0, 7, 0),
-                  padding: const EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(22),
-                      border: GradientBoxBorder(
-                        gradient: LinearGradient(colors: [
-                          Color(0xFF376AED),
-                          Color(0xFF49B0E2),
-                          Color(0xFF9CECFB)
-                        ]),
-                        width: 2,
-                      )),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(18),
-                    child: Image.asset(
-                      'assets/img/stories/${story.imageFileName}',
-                      width: 54,
-                      height: 54,
-                    ),
+              Container(
+                // margin: EdgeInsets.fromLTRB(7, 0, 7, 0),
+                padding: const EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(22),
+                    border: const GradientBoxBorder(
+                      gradient: LinearGradient(colors: [
+                        Color(0xFF376AED),
+                        Color(0xFF49B0E2),
+                        Color(0xFF9CECFB)
+                      ]),
+                      width: 2,
+                    )),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(18),
+                  child: Image.asset(
+                    'assets/img/stories/${story.imageFileName}',
+                    width: 54,
+                    height: 54,
                   ),
                 ),
               ),
@@ -174,10 +242,10 @@ class _Story extends StatelessWidget {
                 ),
               )
             ]),
-            SizedBox(
+            const SizedBox(
               height: 6,
             ),
-            Text('${story.name}')
+            Text(story.name)
           ],
         ),
       ),
