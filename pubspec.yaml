@@ -38,6 +38,7 @@ dependencies:
   gradient_borders: ^1.0.0
   carousel_slider: ^4.2.1
   flutter_svg: ^2.0.7
+  smooth_page_indicator: ^1.1.0
 
 dev_dependencies:
   flutter_test:

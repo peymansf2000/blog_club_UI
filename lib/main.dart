@@ -1,5 +1,6 @@
 import 'package:blog_club/splash.dart';
 import 'package:flutter/material.dart';
+// import 'package:blog_club/onboarding.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,7 +9,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     const primaryTextColor = Color(0xff0D253C);
@@ -16,6 +16,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Blog Club',
       theme: ThemeData(
+        colorScheme: const ColorScheme.light(
+            primary: Color(0xFF376AED),
+            onPrimary: Colors.white,
+            onSurface: primaryTextColor,
+            onBackground: primaryTextColor,
+            background: Color(0xFFF4F7FF)),
         primarySwatch: Colors.blue,
         fontFamily: 'Avenir',
         textTheme: const TextTheme(
