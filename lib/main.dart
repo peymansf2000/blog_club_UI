@@ -1,4 +1,3 @@
-import 'package:blog_club/auth.dart';
 import 'package:blog_club/splash.dart';
 import 'package:flutter/material.dart';
 // import 'package:blog_club/onboarding.dart';
