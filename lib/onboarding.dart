@@ -1,15 +1,35 @@
 import 'package:blog_club/data.dart';
+import 'package:blog_club/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class OnBoardingScreen extends StatelessWidget {
+class OnBoardingScreen extends StatefulWidget {
+  const OnBoardingScreen({Key? key}) : super(key: key);
+
+  @override
+  State<OnBoardingScreen> createState() => _OnBoardingScreenState();
+}
+
+class _OnBoardingScreenState extends State<OnBoardingScreen> {
   final PageController pageController = PageController();
 
-  OnBoardingScreen({Key? key}) : super(key: key);
+  final items = AppDatabase.onBoardingItems;
+  int page = 0;
+  @override
+  void initState() {
+    pageController.addListener(() {
+      if (pageController.page?.round() != page) {
+        setState(() {
+          page = pageController.page!.round();
+        });
+      }
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final items = AppDatabase.onBoardingItems;
     return Scaffold(
         body: SafeArea(
             child: Scaffold(
@@ -17,7 +37,7 @@ class OnBoardingScreen extends StatelessWidget {
         children: [
           Expanded(child: Image.asset('assets/img/background/onboarding.png')),
           Container(
-            height: 324,
+            height: 280,
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(28),
@@ -51,15 +71,26 @@ class OnBoardingScreen extends StatelessWidget {
                               dotColor: Theme.of(context)
                                   .colorScheme
                                   .primary
-                                  .withOpacity(0.1),
+                                  .withOpacity(0.3),
                               activeDotColor:
                                   Theme.of(context).colorScheme.primary)),
                       ElevatedButton(
-                          onPressed: () {},
-                          child: const Icon(
-                            CupertinoIcons.arrow_right,
-                            size: 22,
-                          )),
+                          onPressed: () {
+                            page == items.length - 1
+                                ? Navigator.of(context)
+                                    .pushReplacement(MaterialPageRoute(
+                                    builder: (context) => const HomeScreen(),
+                                  ))
+                                : pageController.nextPage(
+                                    duration: const Duration(milliseconds: 200),
+                                    curve: Curves.linear);
+                          },
+                          child: page == items.length - 1
+                              ? const Icon(CupertinoIcons.checkmark)
+                              : const Icon(
+                                  CupertinoIcons.arrow_right,
+                                  size: 22,
+                                )),
                     ],
                   ),
                 )
@@ -78,8 +109,10 @@ class _PageView extends StatelessWidget {
     required this.items,
     required this.controller,
   }) : super(key: key);
+
   final List<OnBoardingItem> items;
   final PageController controller;
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -102,7 +135,7 @@ class _Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(40),
+      padding: const EdgeInsets.fromLTRB(40, 40, 40, 0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
