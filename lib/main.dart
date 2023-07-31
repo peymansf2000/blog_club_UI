@@ -1,3 +1,4 @@
+import 'package:blog_club/article.dart';
 import 'package:blog_club/splash.dart';
 import 'package:flutter/material.dart';
 // import 'package:blog_club/onboarding.dart';
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Blog Club',
       theme: ThemeData(
+        appBarTheme: AppBarTheme(backgroundColor: Color(0xFFF4F7FF)),
         colorScheme: const ColorScheme.light(
             primary: Color(0xFF376AED),
             onPrimary: Colors.white,
@@ -46,6 +48,11 @@ class MyApp extends StatelessWidget {
               fontFamily: 'Avenir',
               fontWeight: FontWeight.w800,
             ),
+            bodyLarge: TextStyle(
+                color: Color(0xFF2D4379),
+                fontSize: 14,
+                fontFamily: 'Avenir',
+                fontWeight: FontWeight.w400),
             bodyMedium: TextStyle(
               color: primaryTextColor,
               fontSize: 14,
