@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
         appBarTheme: AppBarTheme(backgroundColor: Color(0xFFF4F7FF)),
         colorScheme: const ColorScheme.light(
             primary: Color(0xFF376AED),
+            shadow: Color(0x700C243C),
             onPrimary: Colors.white,
             onSurface: primaryTextColor,
             onBackground: primaryTextColor,
@@ -36,6 +37,17 @@ class MyApp extends StatelessWidget {
               color: Color(0xFF0D253C),
               fontSize: 24,
               fontWeight: FontWeight.w800,
+            ),
+            titleSmall: TextStyle(
+              color: Color(0xFF0D253C),
+              fontSize: 16,
+              fontWeight: FontWeight.w800,
+            ),
+            headlineSmall: TextStyle(
+              color: Colors.white70,
+              fontSize: 12,
+              fontFamily: 'Mulish',
+              fontWeight: FontWeight.w400,
             ),
             headlineMedium: TextStyle(
               color: Colors.white,
