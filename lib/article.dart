@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class ArticleScreen extends StatelessWidget {
   const ArticleScreen({Key? key}) : super(key: key);
@@ -89,7 +88,7 @@ showSnacBar(context, 'Like butten is clicked');
                       height: 38,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 16,
                   ),
                   Column(
@@ -100,21 +99,21 @@ showSnacBar(context, 'Like butten is clicked');
                       Text(
                         '2m ago',
                         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                              color: Color(0xFF7B8BB2),
+                              color: const Color(0xFF7B8BB2),
                               fontWeight: FontWeight.w400,
                             ),
                       )
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 60,
                   ),
-                  IconButton(onPressed:(){ showSnacBar(context, 'Share button is clicked'); } ,icon:Icon(CupertinoIcons.share, color: Colors.blue)),
-                  SizedBox(
+                  IconButton(onPressed:(){ showSnacBar(context, 'Share button is clicked'); } ,icon:const Icon(CupertinoIcons.share, color: Colors.blue)),
+                  const SizedBox(
                     width: 7,
                   ),
                   IconButton(
-                    icon: Icon(
+                    icon: const Icon(
                       CupertinoIcons.bookmark,
                       color: Colors.blue,
                     ), onPressed: () { showSnacBar(context, 'Bookmark button is clicked'); },
@@ -122,11 +121,11 @@ showSnacBar(context, 'Like butten is clicked');
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             ClipRRect(
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(28),
                     topRight: Radius.circular(28)),
                 child: Image.asset(
@@ -171,6 +170,6 @@ showSnacBar(context, 'Like butten is clicked');
     );
   }
   void showSnacBar(BuildContext context, String message){
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(behavior:SnackBarBehavior.floating,content: Text(message)));
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import 'data.dart';
 
@@ -11,7 +10,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      body: SingleChildScrollView(physics: BouncingScrollPhysics(),
+      body: SingleChildScrollView(physics: const BouncingScrollPhysics(),
           child: Column(
         children: [
           AppBar(
@@ -24,13 +23,13 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
             actions: [
-              IconButton(onPressed: () {}, icon: Icon(CupertinoIcons.ellipsis)),
+              IconButton(onPressed: () {}, icon: const Icon(CupertinoIcons.ellipsis)),
               const SizedBox(
                 width: 20,
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Padding(
@@ -52,7 +51,7 @@ class ProfileScreen extends StatelessWidget {
                             width: 66,
                             height: 66,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 24,
                           ),
                           Column(
@@ -81,21 +80,21 @@ class ProfileScreen extends StatelessWidget {
                               ])
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 24,
                       ),
                       Text(
                         'About me',
                         style: Theme.of(context).textTheme.titleSmall,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 8,
                       ),
                       Text(
                         'Madison Blackstone is a director of user experience design, with experience managing global teams.',
                         style: Theme.of(context).textTheme.bodyLarge,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       )
                     ],
@@ -125,7 +124,7 @@ class ProfileScreen extends StatelessWidget {
                           children: [
                             Container(
                               decoration: BoxDecoration(
-                                  color: Color(0xFF2151CD),
+                                  color: const Color(0xFF2151CD),
                                   borderRadius: BorderRadius.circular(12)),
                               width: 77,
                               height: 66,
@@ -139,7 +138,7 @@ class ProfileScreen extends StatelessWidget {
                                         .headlineMedium
                                         ?.copyWith(fontSize: 18),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 4,
                                   ),
                                   Text(
@@ -151,7 +150,7 @@ class ProfileScreen extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            Container(
+                            SizedBox(
                               width: 77,
                               height: 66,
                               child: Column(
@@ -164,7 +163,7 @@ class ProfileScreen extends StatelessWidget {
                                         .headlineMedium
                                         ?.copyWith(fontSize: 18),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 4,
                                   ),
                                   Text(
@@ -176,7 +175,7 @@ class ProfileScreen extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            Container(
+                            SizedBox(
                               width: 77,
                               height: 66,
                               child: Column(
@@ -189,7 +188,7 @@ class ProfileScreen extends StatelessWidget {
                                         .headlineMedium
                                         ?.copyWith(fontSize: 18),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 4,
                                   ),
                                   Text(
@@ -208,7 +207,7 @@ class ProfileScreen extends StatelessWidget {
                   ))
             ]),
           ),
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
           Container(
@@ -219,7 +218,7 @@ class ProfileScreen extends StatelessWidget {
                     child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text('My Posts',style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20),),
-                      Row(children: [Icon(Icons.list,size: 28),SizedBox(width: 24),Icon(Icons.apps)])
+                      const Row(children: [Icon(Icons.list,size: 28),SizedBox(width: 24),Icon(Icons.apps)])
                         
                       ],
                     ),

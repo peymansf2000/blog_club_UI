@@ -1,3 +1,4 @@
+import 'package:blog_club/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -133,7 +134,10 @@ class _Login extends StatelessWidget {
                           borderRadius: BorderRadius.circular(12))),
                       minimumSize: MaterialStateProperty.all(
                           Size(MediaQuery.of(context).size.width, 60))),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => const MainScreen()));
+                  },
                   child: Text('Login'.toUpperCase())),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -243,8 +247,11 @@ class _SignUp extends StatelessWidget {
                           borderRadius: BorderRadius.circular(12))),
                       minimumSize: MaterialStateProperty.all(
                           Size(MediaQuery.of(context).size.width, 60))),
-                  onPressed: () {},
-                  child: Text('Login'.toUpperCase())),
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => const MainScreen()));
+                  },
+                  child: Text('Sign up'.toUpperCase())),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
