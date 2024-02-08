@@ -9,3 +9,9 @@
 *.rc linguist-detectable=false
 *.cpp linguist-detectable=false
 CMakeLists.txt linguist-detectable=false
+*.swift linguist-vendored
+*.storyboard linguist-vendored
+*.xib linguist-vendored
+*.xcworkspacedata linguist-vendored
+*.xcuserstate linguist-vendored
+*.pbxproj linguist-vendored
