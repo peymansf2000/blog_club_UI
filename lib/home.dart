@@ -303,7 +303,7 @@ class _StoryList extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
       child: SizedBox(
         width: MediaQuery.of(context).size.width,
-        height: 92,
+        height: 100,
         child: ListView.builder(
           physics: const BouncingScrollPhysics(),
           itemCount: stories.length,
